@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Image Enhancer AI SaaS - Documentation</title>
+    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <style>
+        :root {
+            --primary: #0a7ea4;
+            --bg: #ffffff;
+            --text: #11181C;
+            --sidebar-bg: #f9f9f9;
+            --border: #e5e5e5;
+        }
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --primary: #fff;
+                --bg: #151718;
+                --text: #ECEDEE;
+                --sidebar-bg: #1a1d1e;
+                --border: #333;
+            }
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            display: flex;
+            height: 100vh;
+            background-color: var(--bg);
+            color: var(--text);
+        }
+        #sidebar {
+            width: 280px;
+            background-color: var(--sidebar-bg);
+            border-right: 1px solid var(--border);
+            padding: 20px;
+            overflow-y: auto;
+            flex-shrink: 0;
+        }
+        #content {
+            flex: 1;
+            padding: 40px;
+            overflow-y: auto;
+            max-width: 900px;
+        }
+        .nav-item {
+            display: block;
+            padding: 10px 12px;
+            margin-bottom: 4px;
+            text-decoration: none;
+            color: var(--text);
+            border-radius: 6px;
+            font-size: 14px;
+            cursor: pointer;
+        }
+        .nav-item:hover {
+            background-color: rgba(0,0,0,0.05);
+        }
+        .nav-item.active {
+            background-color: var(--primary);
+            color: var(--bg);
+            font-weight: 600;
+        }
+        h1, h2, h3 { margin-top: 1.5em; }
+        h1 { margin-top: 0; border-bottom: 1px solid var(--border); padding-bottom: 0.5em; }
+        code {
+            background-color: rgba(127, 127, 127, 0.1);
+            padding: 2px 4px;
+            border-radius: 4px;
+            font-family: 'Menlo', 'Monaco', 'Courier New', monospace;
+        }
+        pre code {
+            display: block;
+            padding: 16px;
+            overflow-x: auto;
+            background-color: #1e1e1e; /* Always dark for code blocks */
+            color: #d4d4d4;
+        }
+        img { max-width: 100%; border-radius: 8px; }
+        blockquote {
+            border-left: 4px solid var(--primary);
+            margin: 0;
+            padding-left: 16px;
+            opacity: 0.8;
+        }
+        
+        /* Mobile */
+        @media (max-width: 768px) {
+            body { flex-direction: column; }
+            #sidebar { width: 100%; height: auto; border-right: none; border-bottom: 1px solid var(--border); padding: 10px; display: flex; overflow-x: auto; white-space: nowrap; }
+            #content { padding: 20px; }
+            .nav-item { display: inline-block; margin-right: 10px; }
+        }
+    </style>
+</head>
+<body>
+
+<div id="sidebar">
+    <div style="margin-bottom: 20px; font-weight: bold; font-size: 18px;">Documentation</div>
+    <a class="nav-item active" onclick="loadPage('01-getting-started')">1. Getting Started</a>
+    <a class="nav-item" onclick="loadPage('02-firebase-setup')">2. Firebase Setup</a>
+    <a class="nav-item" onclick="loadPage('03-configuration')">3. Configuration</a>
+    <a class="nav-item" onclick="loadPage('04-customization')">4. Customization</a>
+    <a class="nav-item" onclick="loadPage('05-deployment')">5. Deployment</a>
+    <a class="nav-item" onclick="loadPage('06-troubleshooting')">6. Troubleshooting</a>
+    <a class="nav-item" onclick="loadPage('07-architecture')">7. Architecture</a>
+</div>
+
+<div id="content">
+    <!-- Content will be injected here -->
+</div>
+
+<!-- Hidden Markdown Content -->
+<script id="md-01-getting-started" type="text/markdown">
+# Getting Started Guide
+
+Welcome to the **Image Enhancer AI SaaS Starter Kit**! This guide will help you set up your development environment and get the application running locally.
+
+## Prerequisites
+
+Before you begin, ensure you have the following installed on your machine:
+
+1.  **Node.js (LTS)**: Version 18 or higher is required.
+    *   [Download Node.js](https://nodejs.org/)
+    *   Verify installation: `node -v`
+2.  **Git**: For version control.
+    *   [Download Git](https://git-scm.com/)
+3.  **Expo CLI**: The command-line tool for Expo.
+    *   Install globally: `npm install -g expo-cli`
+4.  **Firebase CLI**: For deploying backend functions and managing Firebase projects.
+    *   Install globally: `npm install -g firebase-tools`
+    *   Login: `firebase login`
+5.  **Yarn** (Optional but recommended):
+    *   Install globally: `npm install -g yarn`
+
+---
+
+## Installation
+
+### 1. Clone the Repository
+
+```bash
+git clone <your-repo-url>
+cd image-enhancer-ai-saas-starter-kit
+```
+
+### 2. Install App Dependencies
+
+Install the dependencies for the React Native / Expo application.
+
+```bash
+# Using npm
+npm install
+
+# OR using yarn
+yarn install
+```
+
+### 3. Install Backend Dependencies
+
+The backend logic lives in the `functions` directory. You must install dependencies there separately.
+
+```bash
+cd functions
+# Using npm
+npm install
+
+# OR using yarn
+yarn install
+
+# Return to root
+cd ..
+```
+
+---
+
+## Environment Setup
+
+This project uses environment variables to manage sensitive keys for Firebase, Google Auth, and Payments.
+
+### 1. App Environment Variables
+
+1.  Locate the `.env.example` file in the root directory.
+2.  Copy it to a new file named `.env`.
+
+    ```bash
+    cp .env.example .env
+    # Windows
+    copy .env.example .env
+    ```
+
+3.  Open `.env` and fill in the values. You will get these values in the [Firebase Setup Guide](./02-firebase-setup.md).
+
+    ```env
+    EXPO_PUBLIC_FIREBASE_API_KEY=...
+    EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=...
+    ...
+    ```
+
+### 2. Functions Environment Variables
+
+1.  Locate the `functions/.env.example` file.
+2.  Copy it to a new file named `functions/.env`.
+
+    ```bash
+    cd functions
+    cp .env.example .env
+    # Windows
+    copy .env.example .env
+    ```
+
+3.  Open `functions/.env` and fill in the values.
+
+    ```env
+    GEMINI_API_KEY=...
+    PAYMENT_SECRET_KEY=...
+    ```
+
+---
+
+## Running the Application
+
+Once you have configured your environment (see [Configuration Guide](./03-configuration.md) and [Firebase Setup](./02-firebase-setup.md)), you can start the app.
+
+### Start the Expo Development Server
+
+```bash
+npx expo start
+```
+
+This will open a terminal UI with a QR code.
+
+*   **iOS**: Press `i` to open in the iOS Simulator (requires Xcode).
+*   **Android**: Press `a` to open in the Android Emulator (requires Android Studio).
+*   **Web**: Press `w` to open in the browser.
+*   **Physical Device**: Install the "Expo Go" app from the App Store/Play Store and scan the QR code.
+
+### Start the Firebase Functions Emulator (Optional)
+
+If you want to test Cloud Functions locally without deploying:
+
+```bash
+cd functions
+npm run serve
+```
+
+*Note: You will need to update your app to point to the local emulator URL instead of the production URL in `lib/functions-client.ts`.*
+
+---
+
+## Next Steps
+
+*   [Set up Firebase](#02-firebase-setup)
+*   [Configure the App](#03-configuration)
+</script>
+
+<script id="md-02-firebase-setup" type="text/markdown">
+# Firebase Setup Guide
+
+This project relies on Firebase for Authentication, Database (Firestore), Storage, and Serverless Backend (Cloud Functions). Follow these steps to set up your project.
+
+## 1. Create a Firebase Project
+
+1.  Go to the [Firebase Console](https://console.firebase.google.com/).
+2.  Click **"Add project"**.
+3.  Enter a name (e.g., "Image Enhancer AI").
+4.  (Optional) Enable Google Analytics.
+5.  Click **"Create project"**.
+
+## 2. Enable Services
+
+### Authentication
+
+1.  In the left sidebar, click **Build** -> **Authentication**.
+2.  Click **"Get started"**.
+3.  Select **"Sign-in method"** tab.
+4.  Enable **Email/Password**.
+5.  (Optional) Enable **Google**.
+    *   You will need to configure OAuth consent screens in Google Cloud Console later for production.
+
+### Cloud Firestore
+
+1.  Click **Build** -> **Firestore Database**.
+2.  Click **"Create database"**.
+3.  Select a location (e.g., `nam5 (us-central)`).
+4.  Start in **Production mode** (we have already set up rules in `firestore.rules`).
+
+### Storage
+
+1.  Click **Build** -> **Storage**.
+2.  Click **"Get started"**.
+3.  Start in **Production mode** (we have already set up rules in `storage.rules`).
+4.  Click **Done**.
+
+### Functions
+
+1.  Click **Build** -> **Functions**.
+2.  Click **"Upgrade project"** if prompted. Cloud Functions require the **Blaze (Pay as you go)** plan.
+    *   *Note: The free tier is generous, but a credit card is required.*
+
+## 3. Get Configuration Keys
+
+### Web App Config (For Expo)
+
+1.  Click the **Gear icon** (Project Settings) in the sidebar.
+2.  Scroll down to **"Your apps"**.
+3.  Click the **Web icon** (`</>`).
+4.  Register the app (e.g., "Image Enhancer Web").
+5.  You will see a `firebaseConfig` object.
+6.  Copy these values into your root `.env` file:
+
+    ```env
+    EXPO_PUBLIC_FIREBASE_API_KEY=apiKey
+    EXPO_PUBLIC_FIREBASE_AUTH_DOMAIN=authDomain
+    EXPO_PUBLIC_FIREBASE_PROJECT_ID=projectId
+    EXPO_PUBLIC_FIREBASE_STORAGE_BUCKET=storageBucket
+    EXPO_PUBLIC_FIREBASE_MESSAGING_SENDER_ID=messagingSenderId
+    EXPO_PUBLIC_FIREBASE_APP_ID=appId
+    EXPO_PUBLIC_FIREBASE_MEASUREMENT_ID=measurementId
+    ```
+
+## 4. Initialize Firebase CLI
+
+In your project root terminal:
+
+1.  Login to Firebase:
+    ```bash
+    firebase login
+    ```
+2.  Select your project:
+    ```bash
+    firebase use --add
+    # Select the project you just created
+    # Alias it as 'default'
+    ```
+
+## 5. Deploy Rules and Functions
+
+Now that your project is linked, deploy the security rules and backend functions.
+
+1.  **Deploy Rules**:
+    ```bash
+    firebase deploy --only firestore:rules,storage
+    ```
+
+2.  **Deploy Functions**:
+    ```bash
+    cd functions
+    npm run build
+    firebase deploy --only functions
+    ```
+
+    *Note: This may take a few minutes. If it fails, check the logs in the Firebase Console.*
+
+## 6. Google Gemini API Key
+
+To use the AI features, you need a Gemini API Key.
+
+1.  Go to [Google AI Studio](https://aistudio.google.com/).
+2.  Click **"Get API key"**.
+3.  Create a key in a new or existing Google Cloud project.
+4.  Copy the key to `functions/.env`:
+    ```env
+    GEMINI_API_KEY=your_key_here
+    ```
+5.  **Important**: For the deployed functions to see this key, you must either:
+    *   Use `dotenv` (which we are using). Ensure `.env` is **NOT** in `.gitignore` for the functions folder if you want to deploy it (Not recommended for security).
+    *   **Recommended**: Set secrets in Firebase Functions.
+        ```bash
+        firebase functions:secrets:set GEMINI_API_KEY
+        # Paste your key
+        ```
+        *Note: You would need to update `functions/src/index.ts` to use `defineSecret` instead of `process.env` if you go this route. For this starter kit, we use `process.env` for simplicity. To deploy env vars safely, consider using `firebase functions:config:set` or including the `.env` file in the deploy (be careful with git).*
+
+    *   **Starter Kit Default**: The starter kit is configured to read from `process.env`. When deploying with `firebase deploy`, the `.env` file in `functions/` is usually ignored by default Firebase behavior unless explicitly included.
+    *   **Fix**: To ensure your keys work in production without committing them:
+        1.  Open `firebase.json`.
+        2.  Ensure `functions.ignore` does NOT include `.env`.
+        3.  **OR** (Better): Use Firebase Config.
+            ```bash
+            firebase functions:config:set app.gemini_key="THE_KEY" app.payment_key="THE_KEY"
+            ```
+            And update `index.ts` to read `functions.config().app.gemini_key`.
+
+    *   **Simplest for Starter Kit**:
+        The `functions/.gitignore` ignores `.env`. However, the Firebase CLI will upload it if it exists locally. Just ensure you have created `functions/.env` locally before running `firebase deploy`.
+
+---
+
+## Next Steps
+
+*   [Configure the App](#03-configuration)
+</script>
+
+<script id="md-03-configuration" type="text/markdown">
+# Configuration Guide
+
+This guide covers how to customize the application's behavior, branding, and pricing.
+
+## 1. App Configuration (`config/app.config.ts`)
+
+The `config/app.config.ts` file is the central place for global settings.
+
+```typescript
+export const config = {
+  appName: "AI Image Enhancer Kit", // Displayed in headers/titles
+  tagline: "Professional AI Photo Enhancement",
+  supportEmail: "support@example.com",
+  website: "https://example.com",
+  
+  links: {
+    terms: "https://example.com/terms",
+    privacy: "https://example.com/privacy",
+  },
+  
+  // Feature Flags
+  features: {
+    enableGuestAccess: true, // Allow users to try without logging in?
+    enableWatermarkPreview: true, // Show watermarked preview before payment?
+    enablePayPerUnlock: true, // Enable payment flow?
+  },
+
+  // Pricing
+  payments: {
+    currency: "USD",
+    priceCents: 299, // $2.99 per image
+  },
+
+  // AI Configuration
+  ai: {
+    model: "gemini-pro", // Vision model
+    imageModel: "nano-banana-pro", // Image generation model
+  }
+};
+```
+
+### Changing Pricing
+
+1.  Update `priceCents` to your desired amount (e.g., `499` for $4.99).
+2.  Update `currency` if needed (e.g., `NGN`, `EUR`).
+    *   *Note: Ensure your Payment Provider (Paystack/Stripe) supports the currency.*
+
+## 2. AI Prompts (`prompt-kit/prompts.json`)
+
+This file defines the "Styles" available to users. You can add, remove, or edit styles here.
+
+**Structure:**
+
+```json
+{
+  "id": "unique-id",
+  "label": "Display Name",
+  "icon": "icon-name", // Ionicons name
+  "title": "Full Title",
+  "description": "Short description for the UI",
+  "systemPrompt": "The instruction sent to the AI..."
+}
+```
+
+### Adding a New Style
+
+1.  Find an icon name from [Ionicons](https://ionic.io/ionicons).
+2.  Add a new object to the array in `prompts.json`.
+3.  Write a detailed `systemPrompt`. This is the most important part. Describe the lighting, camera lens, mood, and colors you want the AI to simulate.
+
+## 3. Payment Setup
+
+The app supports **Paystack** out of the box and is structured to support **Stripe** easily.
+
+### Paystack (Default)
+
+1.  Create a [Paystack Account](https://paystack.com/).
+2.  Get your **Public Key** and **Secret Key**.
+3.  Add Public Key to root `.env`: `EXPO_PUBLIC_PAYSTACK_PUBLIC_KEY=pk_...`
+4.  Add Secret Key to `functions/.env`: `PAYMENT_SECRET_KEY=sk_...`
+
+### Switching to Stripe
+
+1.  Update `functions/src/payments.ts`:
+    *   The code already has a `stripeVerifier`.
+    *   You need to install the stripe SDK: `npm install stripe` in `functions/`.
+    *   Uncomment the Stripe logic in `getPaymentVerifier`.
+2.  Update Frontend:
+    *   Replace `PaystackTrigger` component with a Stripe implementation (using `@stripe/stripe-react-native`).
+
+---
+
+## Next Steps
+
+*   [Customization Guide](#04-customization)
+</script>
+
+<script id="md-04-customization" type="text/markdown">
+# Customization Guide
+
+Make the app your own by changing colors, fonts, and assets.
+
+## 1. Theming and Colors
+
+The app uses a centralized theme file at `constants/theme.ts`.
+
+```typescript
+export const Colors = {
+  light: {
+    text: '#11181C',
+    background: '#fff',
+    tint: '#0a7ea4', // Primary Brand Color
+    icon: '#687076',
+    tabIconDefault: '#687076',
+    tabIconSelected: '#0a7ea4',
+  },
+  dark: {
+    text: '#ECEDEE',
+    background: '#151718',
+    tint: '#fff', // Primary Brand Color for Dark Mode
+    icon: '#9BA1A6',
+    tabIconDefault: '#9BA1A6',
+    tabIconSelected: '#fff',
+  },
+};
+```
+
+*   **To change the brand color**: Update the `tint` property for both light and dark modes.
+*   **To change background colors**: Update `background`.
+
+## 2. Icons and Images
+
+### App Icon
+
+1.  Replace `assets/images/icon.png` (1024x1024px).
+2.  Replace `assets/images/adaptive-icon.png` (1024x1024px).
+3.  Run `npx expo install expo-image-picker` (if not installed) or just build the app to see changes.
+
+### Splash Screen
+
+1.  Replace `assets/images/splash-icon.png`.
+2.  Update background color in `app.json` -> `expo.splash.backgroundColor`.
+
+## 3. Fonts
+
+The app uses the default system font by default. To add custom fonts:
+
+1.  Place font files (`.ttf` or `.otf`) in `assets/fonts/`.
+2.  Load them in `app/_layout.tsx` using `useFonts`.
+
+```typescript
+import { useFonts } from 'expo-font';
+
+// ... inside RootLayout
+const [loaded] = useFonts({
+  'MyCustomFont': require('../assets/fonts/MyCustomFont.ttf'),
+});
+```
+
+3.  Use the font in your styles: `fontFamily: 'MyCustomFont'`.
+
+## 4. Adding New Screens
+
+The app uses **Expo Router** (file-based routing).
+
+*   **New Page**: Create a file in `app/`. E.g., `app/settings.tsx` becomes `/settings`.
+*   **New Tab**: Add a file to `app/(tabs)/`.
+*   **Dynamic Route**: Use brackets. E.g., `app/project/[id].tsx`.
+
+## 5. Modifying the AI Logic
+
+The AI logic resides in `functions/src/index.ts`.
+
+*   **`describeVision`**: Generates a text description of the uploaded image.
+*   **`enhanceImage`**: Sends the description + system prompt + original image to Gemini to generate the new version.
+
+You can tweak the prompts in `functions/src/index.ts` to change how the AI behaves globally, or edit `prompt-kit/prompts.json` for specific styles.
+
+---
+
+## Next Steps
+
+*   [Deployment Guide](#05-deployment)
+</script>
+
+<script id="md-05-deployment" type="text/markdown">
+# Deployment Guide
+
+This guide covers how to deploy your application to the web, iOS, and Android.
+
+## 1. Deploying the Backend (Firebase Functions)
+
+Before deploying the app, ensure your backend is live.
+
+1.  Navigate to the functions directory:
+    ```bash
+    cd functions
+    ```
+2.  Build the TypeScript code:
+    ```bash
+    npm run build
+    ```
+3.  Deploy to Firebase:
+    ```bash
+    firebase deploy --only functions
+    ```
+
+*Verify*: Go to the Firebase Console -> Functions and check that `analyzeAndEnhance` and `verifyAndUnlock` are listed with a green checkmark.
+
+## 2. Deploying to Web
+
+Expo makes web deployment easy.
+
+1.  Install the web dependencies (if not already done):
+    ```bash
+    npx expo install react-dom react-native-web @expo/metro-runtime
+    ```
+2.  Build the web bundle:
+    ```bash
+    npx expo export --platform web
+    ```
+    This creates a `dist` folder.
+3.  Deploy to Firebase Hosting (Recommended):
+    *   Initialize Hosting if you haven't: `firebase init hosting`
+    *   Set public directory to `dist`.
+    *   Configure as a single-page app: **Yes**.
+    *   Deploy:
+        ```bash
+        firebase deploy --only hosting
+        ```
+
+## 3. Building for iOS and Android (EAS Build)
+
+We use **EAS (Expo Application Services)** for building native apps.
+
+### Prerequisites
+
+1.  Install EAS CLI:
+    ```bash
+    npm install -g eas-cli
+    ```
+2.  Login to Expo:
+    ```bash
+    eas login
+    ```
+3.  Configure the project:
+    ```bash
+    eas build:configure
+    ```
+
+### Building for Android (APK/AAB)
+
+1.  **Development Build** (for testing on device):
+    ```bash
+    eas build --profile development --platform android
+    ```
+2.  **Production Build** (for Play Store):
+    ```bash
+    eas build --profile production --platform android
+    ```
+
+### Building for iOS (IPA)
+
+*Note: Requires an Apple Developer Account ($99/year).*
+
+1.  **Development Build**:
+    ```bash
+    eas build --profile development --platform ios
+    ```
+2.  **Production Build** (for App Store):
+    ```bash
+    eas build --profile production --platform ios
+    ```
+
+## 4. Over-the-Air Updates (EAS Update)
+
+You can push JavaScript updates to your users without a full store review.
+
+1.  Publish an update:
+    ```bash
+    eas update --branch production --message "Fixing typo"
+    ```
+
+---
+
+## Next Steps
+
+*   [Troubleshooting](#06-troubleshooting)
+</script>
+
+<script id="md-06-troubleshooting" type="text/markdown">
+# Troubleshooting Guide
+
+Common issues and how to resolve them.
+
+## 1. "Firebase: No Firebase App '[DEFAULT]' has been created"
+
+**Cause**: The Firebase configuration is missing or incorrect in `.env`.
+
+**Solution**:
+1.  Check your root `.env` file.
+2.  Ensure all `EXPO_PUBLIC_FIREBASE_...` variables are set.
+3.  Restart the Expo server (`npx expo start -c` to clear cache).
+
+## 2. Functions Error: "INTERNAL" or "UNAUTHENTICATED"
+
+**Cause**: The Cloud Function failed to execute.
+
+**Solution**:
+1.  Check the **Firebase Console -> Functions -> Logs**.
+2.  **Common Log Errors**:
+    *   `Error: Google Generative AI API key not found`: You forgot to set `GEMINI_API_KEY` in `functions/.env` or via `firebase functions:secrets:set`.
+    *   `Error: Payment secret key not found`: You forgot `PAYMENT_SECRET_KEY`.
+    *   `Quota exceeded`: You ran out of Gemini API quota or Firebase Function invocations.
+
+## 3. "Network Error" or "Connection Refused" on Android Emulator
+
+**Cause**: The Android Emulator cannot access `localhost` directly.
+
+**Solution**:
+*   If running functions locally, ensure you are using the correct IP address (usually `10.0.2.2` for Android emulator) or your machine's LAN IP.
+*   If using deployed functions, ensure your device has internet access.
+
+## 4. Paystack Payment Fails
+
+**Cause**: Invalid keys or currency mismatch.
+
+**Solution**:
+1.  Check that `EXPO_PUBLIC_PAYSTACK_PUBLIC_KEY` matches your Paystack dashboard.
+2.  Ensure the currency in `config/app.config.ts` matches your Paystack account currency (e.g., NGN vs USD).
+3.  Check if you are in "Test Mode" or "Live Mode".
+
+## 5. Build Fails on EAS
+
+**Cause**: Missing dependencies or configuration errors.
+
+**Solution**:
+1.  Read the build logs on the Expo dashboard.
+2.  Common issue: `google-services.json` (Android) or `GoogleService-Info.plist` (iOS) is missing.
+    *   *Fix*: Download these from Firebase Console and place them in the root directory. Update `app.json` to reference them:
+        ```json
+        "android": {
+          "googleServicesFile": "./google-services.json"
+        },
+        "ios": {
+          "googleServicesFile": "./GoogleService-Info.plist"
+        }
+        ```
+
+## 6. TypeScript Errors
+
+**Cause**: Mismatched types or missing definitions.
+
+**Solution**:
+1.  Run `npx tsc --noEmit` to see all errors.
+2.  If in `functions/`, run `npm run build` to check backend types.
+
+---
+
+## Need More Help?
+
+*   Check the [Expo Documentation](https://docs.expo.dev/).
+*   Check the [Firebase Documentation](https://firebase.google.com/docs).
+</script>
+
+<script id="md-07-architecture" type="text/markdown">
+# Architecture Overview
+
+Understanding the technical stack and data flow.
+
+## Tech Stack
+
+*   **Frontend**: React Native (Expo), TypeScript, Expo Router.
+*   **Backend**: Firebase Cloud Functions (Node.js 22).
+*   **Database**: Cloud Firestore (NoSQL).
+*   **Storage**: Cloud Storage for Firebase.
+*   **Auth**: Firebase Authentication.
+*   **AI**: Google Gemini (via Vertex AI or AI Studio).
+*   **Payments**: Paystack (Client-side trigger, Server-side verification).
+
+## Data Flow: Image Enhancement
+
+1.  **Upload**: User selects an image. It is converted to Base64 (or uploaded to temp storage).
+2.  **Request**: App calls `analyzeAndEnhance` Cloud Function.
+3.  **Analysis**: Function calls Gemini Vision (Gemini Pro) to describe the image.
+4.  **Generation**: Function calls Gemini Image (Nano Banana Pro) with the description + style prompt.
+5.  **Processing**:
+    *   The generated image is watermarked using `sharp`.
+    *   Both original and preview images are saved to Firebase Storage.
+    *   A record is created in Firestore (`users/{uid}/glowups/{id}`) with status `locked`.
+6.  **Response**: Function returns the `projectId` and preview URL.
+7.  **Display**: App shows the watermarked preview.
+
+## Data Flow: Payment & Unlock
+
+1.  **Trigger**: User clicks "Unlock".
+2.  **Payment**: App opens Paystack modal. User pays.
+3.  **Verification**:
+    *   App calls `verifyAndUnlock` Cloud Function with the transaction reference.
+    *   Function verifies the transaction with Paystack API.
+    *   If valid, Function updates Firestore document status to `unlocked`.
+    *   Function generates a signed URL (or public URL) for the high-res, un-watermarked image.
+4.  **Result**: App displays the full image and allows download.
+
+## Folder Structure
+
+```
+/
+├── app/                  # Frontend screens (Expo Router)
+│   ├── (auth)/           # Protected routes (Upload, Preview, Result)
+│   ├── (tabs)/           # Main tab navigation
+│   ├── _layout.tsx       # Root layout & providers
+├── components/           # Reusable UI components
+├── config/               # Global app configuration
+├── constants/            # Theme colors and static values
+├── docs/                 # Documentation (You are here)
+├── functions/            # Backend Cloud Functions
+│   ├── src/
+│   │   ├── index.ts      # Main entry point
+│   │   ├── payments.ts   # Payment verification logic
+├── hooks/                # Custom React hooks (useAuth, useGlowups)
+├── lib/                  # Utility libraries (Firebase init, API clients)
+├── prompt-kit/           # AI Style definitions
+├── providers/            # Context providers (Auth)
+├── types/                # TypeScript interfaces
+```
+</script>
+
+<script>
+    function loadPage(id) {
+        // Update active nav item
+        document.querySelectorAll('.nav-item').forEach(el => el.classList.remove('active'));
+        const activeLink = document.querySelector(`.nav-item[onclick="loadPage('${id}')"]`);
+        if (activeLink) activeLink.classList.add('active');
+
+        // Get markdown content
+        const mdScript = document.getElementById(`md-${id}`);
+        if (!mdScript) return;
+        
+        const markdown = mdScript.textContent.trim();
+        
+        // Parse markdown
+        const html = marked.parse(markdown);
+        
+        // Inject into content
+        const contentDiv = document.getElementById('content');
+        contentDiv.innerHTML = html;
+        
+        // Highlight code blocks
+        contentDiv.querySelectorAll('pre code').forEach((block) => {
+            hljs.highlightElement(block);
+        });
+
+        // Scroll to top
+        contentDiv.scrollTop = 0;
+    }
+
+    // Load initial page
+    loadPage('01-getting-started');
+</script>
+
+</body>
+</html>

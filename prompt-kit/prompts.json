@@ -1,0 +1,198 @@
+[
+  {
+    "id": "portrait-studio-soft",
+    "label": "Studio Soft Light",
+    "icon": "person-outline",
+    "title": "Studio Soft Light",
+    "description": "Professional studio lighting with soft shadows and natural skin texture.",
+    "systemPrompt": "Enhance image quality simulating 85mm lens. Softbox lighting, gentle highlight rolloff, natural skin texture preservation. Reduce noise, sharpen eyes. No artificial smoothing."
+  },
+  {
+    "id": "portrait-golden-hour",
+    "label": "Golden Hour Glow",
+    "icon": "sunny-outline",
+    "title": "Golden Hour Glow",
+    "description": "Warm, sun-kissed lighting typical of late afternoon photography.",
+    "systemPrompt": "Simulate golden hour lighting. Warm color temperature (5500K), rim lighting on subject, soft bokeh background. Enhance dynamic range, preserve facial details."
+  },
+  {
+    "id": "portrait-cinematic-teal",
+    "label": "Cinematic Teal",
+    "icon": "film-outline",
+    "title": "Cinematic Teal & Orange",
+    "description": "Modern cinematic look with complementary color grading.",
+    "systemPrompt": "Apply cinematic color grading. Teal shadows, orange skin tones. High contrast, dramatic lighting. Anamorphic lens simulation. Sharp focus on subject."
+  },
+  {
+    "id": "portrait-bw-noir",
+    "label": "B&W Noir",
+    "icon": "contrast-outline",
+    "title": "B&W Noir",
+    "description": "High contrast black and white with dramatic shadows.",
+    "systemPrompt": "Black and white photography. High contrast, deep blacks, bright highlights. Film grain simulation (ISO 400). Dramatic lighting, emotional mood."
+  },
+  {
+    "id": "landscape-hdr-vivid",
+    "label": "Vivid Landscape",
+    "icon": "image-outline",
+    "title": "Vivid Landscape",
+    "description": "Punchy colors and high dynamic range for outdoor shots.",
+    "systemPrompt": "Enhance landscape. Increase saturation and vibrance. High dynamic range (HDR). Sharpen foliage and textures. Clear blue skies, balanced exposure."
+  },
+  {
+    "id": "product-clean-white",
+    "label": "E-commerce Clean",
+    "icon": "cube-outline",
+    "title": "E-commerce Clean",
+    "description": "Bright, clean look suitable for product listings.",
+    "systemPrompt": "Product photography style. Pure white lighting, high key. Sharp details, remove color casts. Neutral white balance. Focus stacking simulation."
+  },
+  {
+    "id": "food-appetizing",
+    "label": "Gourmet Food",
+    "icon": "restaurant-outline",
+    "title": "Gourmet Food",
+    "description": "Enhances textures and colors to make food look delicious.",
+    "systemPrompt": "Food photography enhancement. Increase local contrast and clarity. Warm lighting. Enhance textures of food. Shallow depth of field (f/2.8)."
+  },
+  {
+    "id": "night-city-cyberpunk",
+    "label": "Cyberpunk Night",
+    "icon": "flash-outline",
+    "title": "Cyberpunk Night",
+    "description": "Neon aesthetics for night cityscapes.",
+    "systemPrompt": "Night photography. Cyberpunk aesthetic. Neon glow, deep blues and magentas. Reduce noise. Enhance light trails and reflections."
+  },
+  {
+    "id": "nature-macro",
+    "title": "Macro Detail",
+    "description": "Extreme detail enhancement for close-up shots.",
+    "systemPrompt": "Macro photography simulation. Extreme sharpness on focal point. Creamy bokeh background. Enhance micro-contrast and textures."
+  },
+  {
+    "id": "architecture-modern",
+    "title": "Modern Architecture",
+    "description": "Straight lines and balanced exposure for buildings.",
+    "systemPrompt": "Architectural photography. Perspective correction (vertical lines). Balanced exposure for highlights and shadows. Cool, clean color palette."
+  },
+  {
+    "id": "fashion-editorial",
+    "title": "High Fashion",
+    "description": "Edgy, high-contrast look found in fashion magazines.",
+    "systemPrompt": "Editorial fashion style. High contrast, edgy lighting. Muted colors with skin tone preservation. Sharp details on clothing textures."
+  },
+  {
+    "id": "vintage-film-kodak",
+    "title": "Vintage Kodak",
+    "description": "Nostalgic film look with warm tones.",
+    "systemPrompt": "Simulate Kodak Portra 400 film. Warm tones, fine grain. Soft highlights, slightly lifted shadows. Nostalgic mood."
+  },
+  {
+    "id": "vintage-film-fuji",
+    "title": "Vintage Fuji",
+    "description": "Cooler, greener tones typical of Fujifilm.",
+    "systemPrompt": "Simulate Fujifilm Pro 400H. Cool greens and cyans in shadows. Pastel highlights. Soft contrast. Airy feel."
+  },
+  {
+    "id": "interior-real-estate",
+    "title": "Real Estate Interior",
+    "description": "Bright and spacious look for interiors.",
+    "systemPrompt": "Real estate interior photography. Wide angle lens simulation. Bright, even lighting. Window pull (balanced outdoor view). Neutral color temperature."
+  },
+  {
+    "id": "portrait-beauty-retouch",
+    "title": "Beauty Retouch",
+    "description": "Subtle enhancement for beauty shots.",
+    "systemPrompt": "High-end beauty retouching. Even skin tone, reduce blemishes but keep texture. Brighten eyes, whiten teeth slightly. Soft, flattering lighting."
+  },
+  {
+    "id": "artistic-oil-painting",
+    "title": "Oil Painting Style",
+    "description": "Transforms the image into a realistic oil painting.",
+    "systemPrompt": "Artistic style transfer. Oil painting technique. Visible brush strokes, rich textures. Impasto effect. Vibrant colors."
+  },
+  {
+    "id": "artistic-watercolor",
+    "title": "Watercolor Sketch",
+    "description": "Soft, flowing watercolor aesthetic.",
+    "systemPrompt": "Artistic style transfer. Watercolor painting. Soft edges, color bleeding, paper texture. Light and airy composition."
+  },
+  {
+    "id": "portrait-dramatic-lighting",
+    "title": "Rembrandt Lighting",
+    "description": "Classic dramatic lighting with strong contrast.",
+    "systemPrompt": "Rembrandt lighting simulation. Triangle of light on cheek. Dark background, moody atmosphere. High contrast."
+  },
+  {
+    "id": "lifestyle-bright-airy",
+    "title": "Bright & Airy",
+    "description": "Popular influencer style, bright and low contrast.",
+    "systemPrompt": "Lifestyle photography. Bright and airy. Low contrast, high exposure. Pastel colors. Soft, diffused light."
+  },
+  {
+    "id": "lifestyle-dark-moody",
+    "title": "Dark & Moody",
+    "description": "Desaturated and shadowed for a moody vibe.",
+    "systemPrompt": "Moody lifestyle photography. Underexposed, crushed blacks. Desaturated greens and blues. Rich, deep earth tones."
+  },
+  {
+    "id": "travel-vibrant",
+    "title": "Travel Wanderlust",
+    "description": "Enhances blues and greens for travel photos.",
+    "systemPrompt": "Travel photography. Enhance blues (sky/water) and greens (nature). High clarity. Balanced exposure. Inviting atmosphere."
+  },
+  {
+    "id": "pet-fur-detail",
+    "title": "Pet Portrait",
+    "description": "Specifically tuned to enhance fur texture.",
+    "systemPrompt": "Pet photography. Enhance fur texture and detail. Sharp eyes. Fast shutter speed simulation (freeze motion). Natural lighting."
+  },
+  {
+    "id": "automotive-showroom",
+    "title": "Car Showroom",
+    "description": "Makes cars look shiny and metallic.",
+    "systemPrompt": "Automotive photography. Enhance reflections and metallic paint. High contrast. Cool, industrial background tones. Sharp lines."
+  },
+  {
+    "id": "fitness-gym",
+    "title": "Fitness Gritty",
+    "description": "High clarity to emphasize muscle definition.",
+    "systemPrompt": "Fitness photography. High clarity and structure. Emphasize muscle definition. Gritty texture. Dramatic overhead lighting."
+  },
+  {
+    "id": "concert-stage",
+    "title": "Concert Stage",
+    "description": "Handles difficult stage lighting and noise.",
+    "systemPrompt": "Concert photography. Handle mixed stage lighting. Reduce high ISO noise. Preserve atmosphere and fog effects. Sharp subject."
+  },
+  {
+    "id": "documentary-street",
+    "title": "Street Documentary",
+    "description": "Raw, authentic look for street photography.",
+    "systemPrompt": "Street photography. 35mm lens simulation. Deep depth of field. Authentic colors, slightly gritty. Decisive moment focus."
+  },
+  {
+    "id": "wedding-romantic",
+    "title": "Romantic Wedding",
+    "description": "Soft, dreamy look for wedding shots.",
+    "systemPrompt": "Wedding photography. Soft, romantic glow. Pastel color palette. Slightly overexposed highlights. Dreamy atmosphere."
+  },
+  {
+    "id": "underwater-correction",
+    "title": "Underwater Clarity",
+    "description": "Removes blue cast and restores red tones.",
+    "systemPrompt": "Underwater photography correction. Remove blue/green color cast. Restore red and orange tones. Increase clarity and visibility."
+  },
+  {
+    "id": "astro-stars",
+    "title": "Astrophotography",
+    "description": "Enhances stars and reduces sky noise.",
+    "systemPrompt": "Astrophotography. Enhance star visibility. Reduce sky noise. Deep black sky. Highlight Milky Way details if present."
+  },
+  {
+    "id": "restoration-old-photo",
+    "title": "Old Photo Restore",
+    "description": "Removes scratches and restores faded colors.",
+    "systemPrompt": "Photo restoration. Remove scratches, dust, and tears. Restore faded colors to natural tones. Sharpen details. Remove sepia cast."
+  }
+]
